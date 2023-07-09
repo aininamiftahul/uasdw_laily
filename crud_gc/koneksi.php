@@ -1,24 +1,22 @@
 <?php
-  $host = "localhost"; 
-  $user = "root";
-  $pass = "";
-  $nama_db = "produk"; //nama database
-  $koneksi = mysqli_connect($host,$user,$pass,$nama_db); //pastikan urutan nya seperti ini, jangan tertukar
+$host = "localhost";
+$user = "root";
+$pass = "";
+$nama_db = "msib"; //nama database
+$koneksi = mysqli_connect($host, $user, $pass, $nama_db); //pastikan urutan nya seperti ini, jangan tertukar
 
-  if(!$koneksi){ //jika tidak terkoneksi maka akan tampil error
-    die ("Koneksi dengan database gagal: ".mysql_connect_error());
-  }
-  
+// if(!$koneksi){ //jika tidak terkoneksi maka akan tampil error
+//   die ("Koneksi dengan database gagal: ".mysql_connect_error());
+// }
+
 /*CREATE TABLE `produk` ( `id` INT(11) NOT NULL AUTO_INCREMENT ,  `nama_produk` VARCHAR(255) NULL ,  `deskripsi` TEXT NULL ,  `harga_beli` INT(11) NULL ,  `harga_jual` INT(11) NULL ,  `gambar_produk` VARCHAR(255) NULL ,    PRIMARY KEY  (`id`)) ENGINE = InnoDB;*/
 function query($query)
 {
-    global $koneksi;
-    $result = mysqli_query($koneksi, $query);
-    $rows = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $rows[] = $row;
-    }
-    return;$rows;
+  global $koneksi;
+  $result = mysqli_query($koneksi, $query);
+  $rows = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+  }
+  return $rows;
 }
-
-?>
